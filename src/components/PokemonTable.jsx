@@ -12,10 +12,9 @@ import {
   Typography,
   InputAdornment,
   TableBody,
-  TablePagination
+  TablePagination,
 } from '@mui/material';
 import { Search, Favorite } from '@mui/icons-material';
-
 
 function PokemonTable() {
   const [page, setPage] = useState(0);
@@ -72,13 +71,11 @@ function PokemonTable() {
   useEffect(() => {
     const totalPages = Math.ceil(searchData.length / rowsPerPage);
     setTotalPages(totalPages);
-  
+
     if (page >= totalPages) {
       setPage(0);
     }
   }, [searchData, rowsPerPage, page]);
-  
-
 
   const handleChange = (event, newPage) => {
     if (newPage >= 0 && newPage < totalPages) {
@@ -114,7 +111,7 @@ function PokemonTable() {
                 padding: '10px !important',
                 boxShadow: 'none !important',
               },
-              endAdornment: (
+              startAdornment: (
                 <InputAdornment position="start">
                   <Search />
                 </InputAdornment>
@@ -136,9 +133,9 @@ function PokemonTable() {
                 boxShadow: 'none !important',
                 marginLeft: '10px',
               },
-              endAdornment: (
+              startAdornment: (
                 <InputAdornment position="start">
-                  <Favorite />
+                  <Favorite style={{ opacity: 0.5 }} />
                 </InputAdornment>
               ),
             }}
